@@ -3,30 +3,30 @@ import { CommonRoutesConfig } from '../util/common/routes.config';
 
 import transactionController from './controllers/transaction.controller';
 
-export class AuthRoutes extends CommonRoutesConfig {
+export class TransactionRoutes extends CommonRoutesConfig {
 
     constructor(app: express.Application) {
-        super(app, 'auth');
+        super(app, 'transaction');
     }
 
     configureRoute(): void {
-        this.router.post('/transaction', [
+        this.router.post('/', [
             transactionController.createTransaction
         ]);
 
-        this.router.post('/transaction/transactionStatus', [
+        this.router.post('/transactionStatus', [
             transactionController.updateTransactionStatus
         ]);
 
-        this.router.get('/transaction/transactionsByCustomer', [
+        this.router.get('/transactionsByCustomer', [
             transactionController.getTransactionsByCustomer
         ]);
 
-        this.router.get('/transaction/totalSalesPerCustomer', [
-            transactionController.getTransactionsByCustomer
+        this.router.get('/totalSalesPerCustomer', [
+            transactionController.getTotalSalesPerCustomer
         ]);
 
-        this.router.get('/transaction/:id', [
+        this.router.get('/:id', [
             transactionController.getTransaction
         ]);
  

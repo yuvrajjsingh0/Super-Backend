@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('dist/app.js');
+const app = require('../dist/app.js');
 
 // Test for creating a transaction
 describe('POST /transaction', () => {
@@ -10,15 +10,13 @@ describe('POST /transaction', () => {
         customerId: 1,
         totalAmount: 500,
         status: 'pending',
-        payment_method: [{ method: "cash", amount: 400 }, { method: "cash", amount: 600 }]
+        payment_method: [{ method: "crypto", amount: 400 }, { method: "card", amount: 600 }]
       });
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty('id');
-    // Add more assertions as needed
   });
 });
 
-// Test for updating transaction status
 describe('POST /transaction/transactionStatus', () => {
   it('should update transaction status', async () => {
     const response = await request(app)
@@ -28,7 +26,6 @@ describe('POST /transaction/transactionStatus', () => {
         newStatus: 'Completed'
       });
     expect(response.status).toBe(200);
-    // Add more assertions as needed
   });
 });
 
