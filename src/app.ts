@@ -21,6 +21,6 @@ tableExists("customers").then((res) => !res? runMigrations("create"): "" ).catch
   new TransactionRoutes(app)
 ]
 
-app.listen(port, () => {
+export const createApp = () => app.listen(port, () => {
   return console.log(`✅ Express is listening at http://localhost:${port}`);
 });

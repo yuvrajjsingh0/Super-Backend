@@ -32,7 +32,7 @@ class TransactionController {
 
     async getTransactionsByCustomer(req: express.Request, res: express.Response){
         try{
-            let transactions = await transactionsDao.listTransactionsForCustomer(Number(req.body.customer_id));
+            let transactions = await transactionsDao.listTransactionsForCustomer(Number(req.query.customer_id));
             res.status(200).send(transactions);
         }catch(err){
             res.status(500);
